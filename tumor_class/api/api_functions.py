@@ -1,10 +1,11 @@
 # FUNCTIONS FOR THE API.
 import numpy as np
 import nbimporter
-from jupyter import load_tumor_images
+#from tumor_class.jupyter import load_tumor_images
+from tensorflow.keras.applications.efficientnet import EfficientNetB0
+from tensorflow.keras import layers, models, optimizers
 
-
-klk = load_tumor_images()
+#klk = load_tumor_images()
 
 def get_key_by_value(d, value):
     for k, v in d.items():
@@ -13,6 +14,31 @@ def get_key_by_value(d, value):
     # If the value is not found in the dictionary, return None
     return None
 
-def predict_class(img):
-    temp = np.random.randint(0,4,1)
-    return temp
+def predict_class(img, model):
+    return model.predict(img)
+
+def resize_image(img):
+    image = img.resize((256, 256))
+    return np.array(image)
+
+def load_model():
+
+    model = EfficientNetB0(weights='imagenet',include_top=False,input_shape=(256, 256,3))
+    model.trainable = False
+
+    flatten_layer = layers.Flatten()
+    dense_layer = layers.Dense(100, activation='relu')
+    dropout_layer = layers.Dropout(0.2)
+
+    prediction_layer = layers.Dense(4, activation='softmax')
+
+
+    model = models.Sequential([
+        model,
+        flatten_layer,
+        dense_layer,
+        dropout_layer,
+        prediction_layer
+    ])
+
+    return model

@@ -4,11 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
 
 # Import necessary functions for the API
-from api.api_functions import get_key_by_value, predict_class
+from tumor_class.api.api_functions import get_key_by_value, load_model, predict_class, resize_image
 # from taxifare.ml_logic.registry import load_model
 # from model import predict
-from TUMOR_CLASSIFICATION import jupyter
-
+#from tumor_class.jupyter import load_model
 # Other imports
 import numpy as np
 import cv2
@@ -37,26 +36,13 @@ async def receive_image(img: UploadFile=File(...)):
     ### Receiving and decoding the image
     contents = await img.read()
 
-    nparr = np.fromstring(contents, np.uint8)
-    cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
+    img = resize_image(img)
+
+    # nparr = np.fromstring(contents, np.uint8)
+    # cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
 
     ### Load up the classes_dict to be to return with a more descriptive label the prediction
     model = app.state.model
     tumor_labels = {'0': 'glioma_tumor', '1': 'meningioma_tumor', '2': 'pituitary_tumor', '3': 'no_tumor'}
-    return tumor_labels[str(model.predict(cv2_img))]
-
-
-    ### Encoding and responding with the image
-    im = cv2.imencode('.png', prediction)[1] # extension depends on which format is sent from Streamlit
-    return Response(content=im.tobytes(), media_type="image/png")
-
-
-@app.post('/test')
-async def receive_image():
-    ### Receiving and decoding the image
-    prediction = predict_class('2')[0]
-    print(f'prediction is {prediction}')
-    ### Load up the classes_dict to be to return with a more descriptive label the prediction
-
-    tumor_labels = {'0': 'glioma_tumor', '1': 'meningioma_tumor', '2': 'pituitary_tumor', '3': 'no_tumor'}
-    return tumor_labels[str(model.predict(cv2_img)]
+    #return tumor_labels[str(predict_class(img, model))]
+    return img

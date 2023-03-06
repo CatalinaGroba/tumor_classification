@@ -1,5 +1,10 @@
 # FUNCTIONS FOR THE API.
 import numpy as np
+import nbimporter
+from jupyter import load_tumor_images
+
+
+klk = load_tumor_images()
 
 def get_key_by_value(d, value):
     for k, v in d.items():

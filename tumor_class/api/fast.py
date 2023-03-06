@@ -5,16 +5,19 @@ from starlette.responses import Response
 
 # Import necessary functions for the API
 from api.api_functions import get_key_by_value, predict_class
-from taxifare.ml_logic.registry import load_model
+# from taxifare.ml_logic.registry import load_model
 # from model import predict
+from TUMOR_CLASSIFICATION import jupyter
 
 # Other imports
 import numpy as np
 import cv2
 import io
 
-
+# Load FastApi Constructor
 app = FastAPI()
+
+# load the models that we want to work with:
 app.state.model = load_model()
 
 # Allow all requests (optional, good for development purposes)

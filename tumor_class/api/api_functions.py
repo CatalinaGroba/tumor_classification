@@ -9,6 +9,5 @@ def get_key_by_value(d, value):
     return None
 
 def predict_class(img):
-    return np.randint(0,4,1)
-
-
+    temp = np.random.randint(0,4,1)
+    return temp

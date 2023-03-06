@@ -1,2 +1,3 @@
-make_api:
-	uvicorn api.api:app --host 0.0.0.0
+start_server:
+	uvicorn api.api:app --host localhost
+

@@ -11,4 +11,4 @@ def get_key_by_value(d, value):
 def predict_class(img):
     return np.randint(0,4,1)
 
-print(np.randint(0,4,1))
+

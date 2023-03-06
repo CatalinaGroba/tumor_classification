@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
 
 # Import necessary functions for the API
-from api.api_functions import get_key_by_value
+from api.api_functions import get_key_by_value, predict_class
 from model import predict
 
 # Other imports

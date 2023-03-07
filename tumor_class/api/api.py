@@ -45,4 +45,4 @@ async def receive_image(img: UploadFile=File(...)):
     model = app.state.model
     tumor_labels = {'0': 'glioma_tumor', '1': 'meningioma_tumor', '2': 'pituitary_tumor', '3': 'no_tumor'}
     #return tumor_labels[str(predict_class(img, model))]
-    return img
+    return model.predict()

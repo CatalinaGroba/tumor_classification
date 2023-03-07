@@ -36,4 +36,5 @@ def load_model(stage="Production") -> keras.Model:
             return None
 
     else:
+        
         return None

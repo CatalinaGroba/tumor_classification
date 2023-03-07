@@ -23,6 +23,7 @@ def index():
 @app.post('/upload_image')
 
 async def receive_image(img: UploadFile=File(...)):
+    
     ### Receiving and decoding the image
     contents = await img.read()
     nparr = np.fromstring(contents, np.uint8)

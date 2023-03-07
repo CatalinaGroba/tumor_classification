@@ -1,10 +1,7 @@
-import glob
 import os
-import time
-import pickle
+
 #from colorama import Fore, Style
 from tensorflow import keras
-import io
 from google.cloud import storage
 
 
@@ -27,7 +24,7 @@ def load_model() -> keras.Model:
         return None
 
     else:
-        
+
         return None
 
 

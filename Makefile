@@ -3,3 +3,6 @@ start_server:
 
 start_hello:
 	python -c 'from tumor_class.api.hello import hello_world()'
+
+install_requirements:
+	 pip install -r requirements.txt

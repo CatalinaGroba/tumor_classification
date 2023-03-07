@@ -2,9 +2,10 @@ tensorflow
 pandas
 numpy
 matplotlib
-searborn
 tqdm
 starlette
 fastapi
 uvicorn
 python-multipart
+google-cloud-storage
+opencv-python

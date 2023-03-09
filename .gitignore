@@ -1,2 +1,2 @@
 raw_data/
-tumor_class/ml_logic/models/
+tumor_class/ml_logic/models/*.h5

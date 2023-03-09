@@ -1,1 +1,3 @@
-'Francesco's Branch'
+Francesco's Branch
+I changed the .env, the registry and the api'
+In the .env, care because i createa a variable called LOCAL_REGISTRY_PATH which is an absolute path in my pc. I downloaded the model from Google bucket to this path.

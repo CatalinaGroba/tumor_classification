@@ -1,15 +1,13 @@
 #comment
 ## Import external modules
 from fastapi import FastAPI, UploadFile, File
-from fastapi.middleware.cors import CORSMiddleware
-from starlette.responses import Response
+
 
 # Import necessary functions for the API
-from tumor_class.api.api_functions import resize_image
+
 from tumor_class.ml_logic.registry import load_model
 # Other imports
 import numpy as np
-from numpy import asarray
 #import cv2
 import io
 import cv2

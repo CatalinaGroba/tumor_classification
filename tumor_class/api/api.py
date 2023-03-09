@@ -1,4 +1,4 @@
-# Import external modules
+## Import external modules
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
@@ -32,7 +32,6 @@ async def receive_image(img: UploadFile=File(...)):
     contents = await img.read()
     nparr = np.fromstring(contents, np.uint8)
     cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
     img = Image.fromarray(cv2_img)
     img = img.resize((256,256))
     np_img= np.array(img)

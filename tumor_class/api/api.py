@@ -39,10 +39,11 @@ async def receive_image(img: UploadFile=File(...)):
     model = app.state.model
 
     # Load up the classes_dict to be to returned with a more descriptive label the prediction
-    tumor_labels = {0: 'glioma_tumor', 1: 'meningioma_tumor', 2: 'pituitary_tumor', 3: 'no_tumor'}
+    #{'glioma_tumor': 0, 'meningioma_tumor': 1, 'no_tumor': 2, 'pituitary_tumor': 3}
+    tumor_labels = {0: 'glioma tumor', 1: 'meningioma tumor', 2: 'no tumor', 3: 'pituitary tumor'}
 
     #Predict class
     prediction= model.predict(np.array([np_img]))
 
     #return tumor_label
-    return {'prediction':tumor_labels[np.argmax(prediction)]}
+    return {'prediction':tumor_labels[np.argmax(prediction[0])]}

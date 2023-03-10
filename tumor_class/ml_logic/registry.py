@@ -8,6 +8,7 @@ def load_model() -> keras.Model:
     #the storage module provides functionalities to interact with google cloud
     #client = storage.Client() # create new instane of the CLient class
     client = storage.Client.create_anonymous_client()
+    #breakpoint()
     bucket = client.bucket('tumor_classification')#, user_project='aqueous-ray-374915') #access bucket from a project_id of another person
     blobs = list(client.get_bucket(bucket).list_blobs()) #retrieve a list with all blobs(objects) that are in the bucket shared with the team members
     try:

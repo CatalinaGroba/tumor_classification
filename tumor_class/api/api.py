@@ -2,6 +2,9 @@
 ## Import external modules
 from fastapi import FastAPI, UploadFile, File
 
+# Necessary import for modifying CORS
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Import necessary functions for the API
 
@@ -18,6 +21,14 @@ app = FastAPI()
 
 # Let's store the model into an app.state.model. This means that we don't have to download the model at every request from users but just once:
 app.state.model = load_model()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["*"],
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
 
 # Decorator that sets up an endpoint for our API.
 @app.get("/")
@@ -47,3 +58,8 @@ async def receive_image(img: UploadFile=File(...)):
 
     #return tumor_label
     return {'prediction':tumor_labels[np.argmax(prediction[0])]}
+
+
+@app.post('/test')
+def test(img:UploadFile):
+    return {'img': img.filename}

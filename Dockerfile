@@ -34,7 +34,7 @@ CMD uvicorn tumor_class.api.api:app --host 0.0.0.0 --port $PORT
 
 
 # Once completed this file, in the terminal run these commands:
-# --> 'docker build . -t eu.gcr.io/$GCP_PROJECT/$IMAGE' --> build the docker image, '.' means this directory,
-# --> docker push eu.gcr.io/$GCP_PROJECT/$IMAGE
+# --> 'docker build . -t eu.gcr.io/$GCP_PROJECT/$IMAGE' --> build the docker image, '.' means take it in this directory, '-t' means tag, in which we specify 3 things: 'eu.gcr.io' which is the location european union,'GCP PROJECT' which is the project name, 'IMAGE' which is the name of the image we gave in the .env.
+# --> 'docker push eu.gcr.io/$GCP_PROJECT/$IMAGE'
 
 # the first line builds the docker file.

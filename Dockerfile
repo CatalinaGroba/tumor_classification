@@ -1,7 +1,7 @@
 
 # Create a base image. Our image will inherit configurations and dependencies from this base image. Every addition will be built on top of this.
 # For a python application for instance, it would be better to create a base image 'FROM python:3.9-slim-buster'... in our case we want to inherit all tensorflow library!
-# it isthe case of almost every data science project.
+# it is the case of almost every data science project.
 FROM tensorflow/tensorflow:latest
 
 # Copy all the requirements needed for users to run the application. It is written 2 times: the first one is the source(this directory)
@@ -31,3 +31,10 @@ COPY tumor_class tumor_class/
 # This specifies the command to run when the docker container starts. Uvicorn is the python web server, tumor_class is the application to be served. Finally, specify
 # the host and port numbers that the server should listen to.
 CMD uvicorn tumor_class.api.api:app --host 0.0.0.0 --port $PORT
+
+
+# Once completed this file, in the terminal run these commands:
+# --> 'docker build . -t eu.gcr.io/$GCP_PROJECT/$IMAGE' --> build the docker image, '.' means this directory,
+# --> docker push eu.gcr.io/$GCP_PROJECT/$IMAGE
+
+# the first line builds the docker file.

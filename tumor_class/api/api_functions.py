@@ -1,15 +1,12 @@
 # FUNCTIONS FOR THE API.
 import numpy as np
-<<<<<<< HEAD
 import nbimporter
 from google.cloud import storage
 
-=======
 #from tumor_class.jupyter import load_tumor_images
 from tensorflow.keras.applications.efficientnet import EfficientNetB0
 from tensorflow.keras import layers, models, optimizers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
->>>>>>> cb6ebf996f11c1d248763dc08eb4e95629e31f64
 
 
 def get_key_by_value(d, value):
@@ -23,10 +20,6 @@ def predict_class(img, model):
     return model.predict(img)
 
 def resize_image(img):
-<<<<<<< HEAD
-    image = img.resize((256, 256))
-    return np.array(image)
-=======
     #generator= ImageDataGenerator()
     #image = generator.flow(target_size=(256, 256))
     img= img.resize(256,256).expand_dims(axis=-1)
@@ -53,4 +46,3 @@ def load_model():
     ])
 
     return model
->>>>>>> cb6ebf996f11c1d248763dc08eb4e95629e31f64

@@ -6,3 +6,8 @@ start_hello:
 
 install_requirements:
 	 pip install -r requirements.txt
+docker_build:
+	docker build . -t eu.gcr.io/$GCP_PROJECT/$IMAGE
+
+docker_push:
+	docker push eu.gcr.io/$GCP_PROJECT/$IMAGE
